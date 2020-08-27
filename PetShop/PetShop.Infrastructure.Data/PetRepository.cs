@@ -14,7 +14,7 @@ namespace PetShop.Infrastructure.Data
         public PetRepository()
         {
             _pets = FakeDB.pets; //consider removing FakeDB altogether
-            _counter = FakeDB.counter;            
+            _counter = FakeDB.petCounter;            
         }
 
         public Pet CreatePet(Pet pet)

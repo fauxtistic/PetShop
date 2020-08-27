@@ -9,6 +9,8 @@ namespace PetShop.Infrastructure.Data
     public static class FakeDB
     {
         public static IEnumerable<Pet> pets = new List<Pet>();
-        public static int counter = 1;        
+        public static int petCounter = 1;
+        public static IEnumerable<Owner> owners = new List<Owner>();
+        public static int ownerCounter = 1;
     }
 }
