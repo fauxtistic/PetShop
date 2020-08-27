@@ -215,8 +215,8 @@ namespace PetShop.ConsoleApp
             else
             {
                 bool success;
-                _petService.DeletePet(foundPet, out success);
-                Console.WriteLine($"The operation to remove:\n{foundPet}\n" + ((success) ? "\n...was successful!" : "\n...was NOT successful!"));
+                Pet deletedPet = _petService.DeletePet(foundPet, out success);
+                Console.WriteLine($"The operation to remove:\n{deletedPet}\n" + ((success) ? "\n...was successful!" : "\n...was NOT successful!"));
             }
         }
 
