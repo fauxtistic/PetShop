@@ -78,9 +78,7 @@ namespace PetShop.ConsoleApp
                     ShowPets(_petService.GetAllPets());
                     break;
                 case 2:
-                    PetType type = GetPetType();
-                    Console.WriteLine($"Showing pets of type {type}:\n");
-                    ShowPets(_petService.GetAllPetsOfType(type));
+                    ShowPetsOfSpecifiedType();                    
                     break;
                 case 3:
                     Console.WriteLine("Showing all pets by price, in descending order:\n");
@@ -169,6 +167,21 @@ namespace PetShop.ConsoleApp
             return date;            
         }
 
+        private void ShowPetsOfSpecifiedType()
+        {
+            PetType type = GetPetType();
+            List<Pet> petsOfType = _petService.GetAllPetsOfType(type);
+            if (petsOfType.Count == 0)
+            {
+                Console.WriteLine($"There are no pets of type {type}");
+            }
+            else
+            {
+                Console.WriteLine($"Showing pets of type {type}:\n");
+                ShowPets(petsOfType);
+            }            
+        }
+
         private void ShowPets(List<Pet> pets) 
         {
             foreach (var pet in pets)
@@ -223,9 +236,9 @@ namespace PetShop.ConsoleApp
         private Pet GetPetById()
         {
             int id;
-            while (!int.TryParse(Console.ReadLine(), out id))
+            while (!int.TryParse(Console.ReadLine(), out id) || id < 1)
             {
-                Console.WriteLine("You must enter an integer");
+                Console.WriteLine("You must enter a positive integer");
             }
             return _petService.GetPetById(id);
         }
