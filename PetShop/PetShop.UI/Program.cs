@@ -17,10 +17,10 @@ namespace PetShop.UI
             serviceCollection.AddScoped<IPetService, PetService>();
             serviceCollection.AddScoped<IOwnerRepository, OwnerRepository>();
             serviceCollection.AddScoped<IOwnerService, OwnerService>();
-            serviceCollection.AddScoped<IConsoleMenu, ConsoleMenu>();
+            serviceCollection.AddScoped<IMenu, ConsoleMenu>();
 
             var serviceProvider = serviceCollection.BuildServiceProvider();
-            var consoleMenu = serviceProvider.GetRequiredService<IConsoleMenu>();
+            var consoleMenu = serviceProvider.GetRequiredService<IMenu>();
             var petRepository = serviceProvider.GetRequiredService<IPetRepository>();
             var ownerRepository = serviceProvider.GetRequiredService<IOwnerRepository>();
 

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PetShop.ConsoleApp
 {
-    public interface IConsoleMenu
+    public interface IMenu
     {
         public void ConsoleLoop();
     }

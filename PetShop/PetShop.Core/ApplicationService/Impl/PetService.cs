@@ -31,7 +31,7 @@ namespace PetShop.Core.ApplicationService.Impl
             {
                 errorMessage += "Birth date of the pet cannot be in the future\n";
             }
-            if (pet.SoldDate > pet.BirthDate)
+            if (pet.SoldDate < pet.BirthDate)
             {
                 errorMessage += "Last selling date of the pet cannot predate it's birth\n";
             }

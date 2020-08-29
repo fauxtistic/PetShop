@@ -12,5 +12,14 @@ namespace PetShop.Core.Entity
         public string Address { get; set; }
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
+
+        public override string ToString()
+        {
+            return $"Id: {OwnerId}" +
+                   $"\tName: {FirstName} {LastName}" +
+                   $"\tAddress: {Address}" +
+                   $"\tPhone number: {PhoneNumber}" +
+                   $"\tSold date: {Email}";                   
+        }
     }
 }
