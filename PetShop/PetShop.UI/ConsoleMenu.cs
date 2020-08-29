@@ -251,17 +251,17 @@ namespace PetShop.ConsoleApp
                 name = GetUserInput("Name of the pet must be longer than two characters. Try entering a new name:");
             }
             var type = GetPetType();
-            var birthDate = GetDateTime("Enter the birth date of the pet in format mm-dd-yyyy:");
+            var birthDate = GetDateTime("Enter the birth date of the pet in format dd-mm-yyyy:");
             while (birthDate > DateTime.Now)
             {
                 Console.WriteLine("Birth date of the pet cannot be in the future");
-                birthDate = GetDateTime("Enter the birth date of the pet in format mm-dd-yyyy:");
+                birthDate = GetDateTime("Enter the birth date of the pet in format dd-mm-yyyy:");
             }
-            var soldDate = GetDateTime("Enter the last selling date of the pet in format mm-dd-yyyy:");
+            var soldDate = GetDateTime("Enter the last selling date of the pet in format dd-mm-yyyy:");
             while (soldDate > birthDate)
             {
                 Console.WriteLine($"Last selling date of the pet cannot predate it's birthDate {birthDate.ToShortDateString()}");
-                soldDate = GetDateTime("Enter the last selling date of the pet in format mm-dd-yyyy:");
+                soldDate = GetDateTime("Enter the last selling date of the pet in format dd-mm-yyyy:");
             }
             var color = GetUserInput("Enter the color(s) of the pet:");
             while (color.Length < 3)
