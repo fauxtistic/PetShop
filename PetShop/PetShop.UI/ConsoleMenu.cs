@@ -35,8 +35,8 @@ namespace PetShop.ConsoleApp
             bool running = true;
             while (running)
             {
-                ShowOptions();
-                var option = ChooseOption();
+                ShowOptions(_menuOptions);
+                var option = ChooseOption(closeOption);
                 ProcessOption(option);
                 if (option != closeOption)
                 {
@@ -50,25 +50,31 @@ namespace PetShop.ConsoleApp
             }
         }
 
-        private void ShowOptions()
+        private void ShowOptions(string[] menuOptions)
         {
             Console.Clear();
-            for (int i = 0; i < _menuOptions.Length; i++)
+            for (int i = 0; i < menuOptions.Length; i++)
             {
-                Console.WriteLine($"{i + 1}. {_menuOptions[i]}");
+                Console.WriteLine($"{i + 1}. {menuOptions[i]}");
             }
             
         }
 
-        private int ChooseOption()
+        private int ChooseOption(int options)
         {
             int option;
             Console.WriteLine("\nSelect option by typing number:");
-            while (!int.TryParse(Console.ReadLine(), out option) || option < 1 || option > closeOption)
+            while (!int.TryParse(Console.ReadLine(), out option) || option < 1 || option > options)
             {
                 Console.WriteLine("You must type a number from the ones listed above");
             }
             return option;
+        }
+
+        private string GetUserInput(string command)
+        {
+            Console.WriteLine(command);
+            return Console.ReadLine();
         }
 
         private void ProcessOption(int option)
@@ -293,10 +299,5 @@ namespace PetShop.ConsoleApp
                  
         }
 
-        private string GetUserInput(string command)
-        {
-            Console.WriteLine(command);
-            return Console.ReadLine();
-        }
     }
 }
