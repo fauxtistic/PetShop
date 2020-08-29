@@ -15,13 +15,16 @@ namespace PetShop.UI
             var serviceCollection = new ServiceCollection();
             serviceCollection.AddScoped<IPetRepository, PetRepository>();
             serviceCollection.AddScoped<IPetService, PetService>();
+            serviceCollection.AddScoped<IOwnerRepository, OwnerRepository>();
+            serviceCollection.AddScoped<IOwnerService, OwnerService>();
             serviceCollection.AddScoped<IConsoleMenu, ConsoleMenu>();
 
             var serviceProvider = serviceCollection.BuildServiceProvider();
             var consoleMenu = serviceProvider.GetRequiredService<IConsoleMenu>();
             var petRepository = serviceProvider.GetRequiredService<IPetRepository>();
+            var ownerRepository = serviceProvider.GetRequiredService<IOwnerRepository>();
 
-            var data = new DataInitializer(petRepository);
+            var data = new DataInitializer(petRepository, ownerRepository);
             data.InitData();
             consoleMenu.ConsoleLoop();
         }

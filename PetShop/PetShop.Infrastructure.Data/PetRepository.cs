@@ -32,8 +32,7 @@ namespace PetShop.Infrastructure.Data
         //should be changed
         public Pet EditPet(int index, Pet editedPet)
         {
-            ((List<Pet>)_pets).RemoveAt(index);
-            ((List<Pet>)_pets).Insert(index, editedPet);
+            ((List<Pet>)_pets)[index] = editedPet;            
             return ((List<Pet>)_pets)[index];
         }
 

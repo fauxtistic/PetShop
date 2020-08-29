@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace PetShop.Core.ApplicationService.Impl
 {
@@ -21,6 +22,7 @@ namespace PetShop.Core.ApplicationService.Impl
         public Pet NewPet(Pet pet)
         {
             string errorMessage = "";
+
             if (pet.Name.Length < 2)
             {
                 errorMessage += "Name of pet must be at least two characters\n";

@@ -9,10 +9,12 @@ namespace PetShop.Infrastructure.Data
     public class DataInitializer
     {
         private IPetRepository _petRepository;
+        private IOwnerRepository _ownerRepository;
 
-        public DataInitializer(IPetRepository petRepository)
+        public DataInitializer(IPetRepository petRepository, IOwnerRepository ownerRepository)
         {
             _petRepository = petRepository;
+            _ownerRepository = ownerRepository;
         }
 
         public void InitData()

@@ -11,6 +11,7 @@ namespace PetShop.ConsoleApp
     {
         private const int closeOption = 8;
         private IPetService _petService;
+        private IOwnerService _ownerService;
         private readonly string[] _menuOptions =
         {
             "Show all pets",
@@ -23,9 +24,10 @@ namespace PetShop.ConsoleApp
             "Exit program"
         };
 
-        public ConsoleMenu(IPetService petService)
+        public ConsoleMenu(IPetService petService, IOwnerService ownerService)
         {
             _petService = petService;
+            _ownerService = ownerService;
         }
 
         public void ConsoleLoop()
