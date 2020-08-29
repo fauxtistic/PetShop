@@ -23,15 +23,23 @@ namespace PetShop.Core.ApplicationService.Impl
             string errorMessage = "";
             if (pet.Name.Length < 2)
             {
-                errorMessage += "Name of pet must be longer than two characters\n";
+                errorMessage += "Name of pet must be at least two characters\n";
             }
-            if (pet.SoldDate < pet.BirthDate)
+            if (pet.BirthDate > DateTime.Now)
+            {
+                errorMessage += "Birth date of the pet cannot be in the future\n";
+            }
+            if (pet.SoldDate > pet.BirthDate)
             {
                 errorMessage += "Last selling date of the pet cannot predate it's birth\n";
             }
+            if (pet.Color.Length < 3)
+            {
+                errorMessage += "Name of color must be at least three characters\n";
+            }
             if (pet.PreviousOwner.Length < 2)
             {
-                errorMessage += "Name of previous owner must be longer than two characters\n";
+                errorMessage += "Name of previous owner must be at least two characters\n";
             }
             if (pet.Price < 0)
             {
