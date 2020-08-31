@@ -69,7 +69,7 @@ namespace PetShop.ConsoleApp
             }
         }
 
-        private void EditOwner() //need to change this as currently owner of pet is not changed, only owner in list
+        private void EditOwner()
         {
             Console.WriteLine("Enter the id of the owner entry you want to edit:");
             Owner foundOwner = GetOwnerById();
@@ -84,8 +84,8 @@ namespace PetShop.ConsoleApp
                 {
                     Owner editedOwner = NewOwner();
                     editedOwner.OwnerId = foundOwner.OwnerId; //alternative pass id to NewOwner
-                    Owner changedOwner = _ownerService.EditOwner(editedOwner);
-                    Console.WriteLine($"Previous information about pet:\n{foundOwner}\n\nPet entry after being edited:\n{changedOwner}\n");
+                    Owner changedOwner = _ownerService.EditOwner(editedOwner);                    
+                    Console.WriteLine($"Owner entry after being edited:\n{changedOwner}\n"); //add text about how entry previously looked
                 }
                 catch (ArgumentException ex)
                 {

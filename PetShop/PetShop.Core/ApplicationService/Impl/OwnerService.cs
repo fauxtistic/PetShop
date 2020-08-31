@@ -63,10 +63,18 @@ namespace PetShop.Core.ApplicationService.Impl
         {
             return GetAllOwners().Find(owner => owner.OwnerId == id);
         }
-        public Owner EditOwner(Owner editedOwner)
+        public Owner EditOwner(Owner editedOwner) //stopgap
         {
-            var index = GetAllOwners().FindIndex(owner => owner.OwnerId == editedOwner.OwnerId);
-            return _ownerRepository.EditOwner(index, editedOwner);
+            Owner changedOwner = GetOwnerById(editedOwner.OwnerId);
+            changedOwner.FirstName = editedOwner.FirstName;
+            changedOwner.LastName = editedOwner.LastName;
+            changedOwner.Address = editedOwner.Address;
+            changedOwner.PhoneNumber = editedOwner.PhoneNumber;
+            changedOwner.Email = editedOwner.Email;
+            return changedOwner;
+
+            //var index = GetAllOwners().FindIndex(owner => owner.OwnerId == editedOwner.OwnerId);
+            //return _ownerRepository.EditOwner(index, editedOwner);
         }
 
         public Owner DeleteOwner(Owner ownerToDelete, out bool success)
