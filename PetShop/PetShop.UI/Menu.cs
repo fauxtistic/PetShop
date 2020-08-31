@@ -57,10 +57,17 @@ namespace PetShop.ConsoleApp
 
         public void ShowItems<T>(List<T> items)
         {
-            foreach (var item in items)
+            if (items.Count == 0)
             {
-                Console.WriteLine($"{item}\n");
+                Console.WriteLine("\nThere are no entries\n");
             }
+            else
+            {
+                foreach (var item in items)
+                {
+                    Console.WriteLine($"{item}\n");
+                }
+            }            
         }
 
         public abstract void ProcessOption(int option);

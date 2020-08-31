@@ -26,7 +26,7 @@ namespace PetShop.Core.Entity
         public DateTime BirthDate { get; set; }
         public DateTime SoldDate { get; set; }
         public string Color { get; set; }
-        public string PreviousOwner { get; set; }
+        public Owner PreviousOwner { get; set; }
         public double Price { get; set; }
 
         public override string ToString()
@@ -37,7 +37,7 @@ namespace PetShop.Core.Entity
                    $"\tBirth date: {BirthDate.ToShortDateString()}" +
                    $"\tSold date: {SoldDate.ToShortDateString()}" +
                    $"\tColor: {Color}" +
-                   $"\tPrevious owner: {PreviousOwner}" +
+                   $"\tPrevious owner: {PreviousOwner.FirstName} {PreviousOwner.LastName} (Id: {PreviousOwner.OwnerId})" +
                    $"\tPrice {Price}";
         }
     }

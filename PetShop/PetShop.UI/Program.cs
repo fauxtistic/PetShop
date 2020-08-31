@@ -25,7 +25,8 @@ namespace PetShop.UI
             var ownerRepository = serviceProvider.GetRequiredService<IOwnerRepository>();
 
             var data = new DataInitializer(petRepository, ownerRepository);
-            data.InitData();
+            data.InitData();          
+
             consoleMenu.ConsoleLoop();
         }
     }

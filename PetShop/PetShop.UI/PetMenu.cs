@@ -80,6 +80,11 @@ namespace PetShop.ConsoleApp
                 Console.WriteLine(ex.StackTrace);
                 Console.WriteLine(ex.Message);
             }
+            catch (KeyNotFoundException ex) //if no owners available for pet
+            {
+                Console.WriteLine(ex.StackTrace);
+                Console.WriteLine(ex.Message);
+            }
         }
 
         private double GetPrice()
@@ -196,6 +201,23 @@ namespace PetShop.ConsoleApp
             return _petService.GetPetById(id);
         }
 
+        private Owner GetOwner()
+        {
+            Console.WriteLine("The previous owner of the pet must be registered\nPress enter to show all available owners below:");
+            Console.ReadLine();
+            ShowItems<Owner>(_ownerService.GetAllOwners());
+            Console.WriteLine("Select an owner by typing their ID:");
+
+            int id;
+            while (!int.TryParse(Console.ReadLine(), out id) || id < 1)
+            {
+                Console.WriteLine("You must enter a positive integer");
+            }
+            Owner foundOwner = _ownerService.GetOwnerById(id);
+            return foundOwner;
+
+        }
+
         private Pet NewPet()
         {
             var name = GetUserInput("Enter the name of the pet:");
@@ -221,11 +243,20 @@ namespace PetShop.ConsoleApp
             {
                 color = GetUserInput("Color of the pet must be longer than two characters. Try entering a new color");
             }
-            var previousOwner = GetUserInput("Enter the previous owner of the pet:"); //change to get object
-            while (previousOwner.Length < 2)
+            
+            if (_ownerService.GetAllOwners().Count == 0)
             {
-                previousOwner = GetUserInput("Name of previous owner must be longer than two characters. Try entering a new name:");
+                throw new KeyNotFoundException("Cannot create pet entry as pet must have previous owner and there no available owners\nReturning to pet menu\nConsider creating new owner entry in owner menu");                               
             }
+
+            var previousOwner = GetOwner();
+            while (previousOwner == null)
+            {
+                Console.WriteLine("There is no owner with this id");
+                Console.ReadLine();
+                previousOwner = GetOwner();
+            }
+            
             var price = GetPrice();
             while (price < 0)
             {

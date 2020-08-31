@@ -20,25 +20,25 @@ namespace PetShop.Core.ApplicationService.Impl
         {
             string errorMessage = "";
 
-            if (!new Regex("^[a - zA - Z] + (([\\'\\,\\.\\-][a-zA-Z])?[a-zA-Z]*)*$").IsMatch(newOwner.FirstName))
+            if (!new Regex(RegexConstants.FirstOrLastName).IsMatch(newOwner.FirstName))
             {
-                errorMessage += "First name must be a single name (use - to separate) consisting of letters\n";
+                errorMessage += "First name must consist of letters a-z\n";
             }
-            if (!new Regex("^[a - zA - Z] + (([\\'\\,\\.\\-][a-zA-Z])?[a-zA-Z]*)*$").IsMatch(newOwner.LastName))
+            if (!new Regex(RegexConstants.FirstOrLastName).IsMatch(newOwner.LastName))
             {
-                errorMessage += "Last name must be a single name (use - to separate) consisting of letters\n";
+                errorMessage += "Last name must consist of letters a-z\n";
             }
-            if (!new Regex("^((.){1,}(\\d){1,}(.){0,})$").IsMatch(newOwner.Address))
+            if (!new Regex(RegexConstants.RegexAddress).IsMatch(newOwner.Address))
             {
                 errorMessage += "Address must be in format street, number, with additions allowed after\n";
             }
-            if (!new Regex("^([\\+][0-9]{1,3}([ \\.\\-])?)?([\\(]{1}[0-9]{3}[\\)])?([0-9A-Z \\.\\-]{1,32})((x|ext|extension)?[0-9]{1,4}?)$").IsMatch(newOwner.PhoneNumber))
+            if (!new Regex(RegexConstants.RegexPhoneNumber).IsMatch(newOwner.PhoneNumber))
             {
                 errorMessage += "Phone number is not in valid format\n";
             }
-            if (!new Regex("[\\w-]+@([\\w-]+\\.)+[\\w-]+").IsMatch(newOwner.Address))
+            if (!new Regex(RegexConstants.RegexEmail).IsMatch(newOwner.Email))
             {
-                errorMessage += "Email address is not in valid format\n";
+                errorMessage += "Email is not in valid format\n";
             }
 
             if (errorMessage.Length > 0)

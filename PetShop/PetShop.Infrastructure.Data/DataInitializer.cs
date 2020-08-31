@@ -19,6 +19,60 @@ namespace PetShop.Infrastructure.Data
 
         public void InitData()
         {
+            Owner owner1 = _ownerRepository.CreateOwner(new Owner() 
+            {
+                FirstName = "John",
+                LastName = "Johnson",
+                Address = "Mock Street 1",
+                PhoneNumber = "000000000",
+                Email = "johnj@mockmail.com"
+            });
+
+            Owner owner2 = _ownerRepository.CreateOwner(new Owner()
+            {
+                FirstName = "Jack",
+                LastName = "Jackson",
+                Address = "Mock Street 2",
+                PhoneNumber = "000000000",
+                Email = "jackj@mockmail.com"
+            });
+
+            Owner owner3 = _ownerRepository.CreateOwner(new Owner()
+            {
+                FirstName = "Uncle",
+                LastName = "Bob",
+                Address = "Mock Street 3",
+                PhoneNumber = "000000000",
+                Email = "uncleb@mockmail.com"
+            });
+
+            Owner owner4 = _ownerRepository.CreateOwner(new Owner()
+            {
+                FirstName = "Martin",
+                LastName = "Fowler",
+                Address = "Mock Street 4",
+                PhoneNumber = "000000000",
+                Email = "martinf@mockmail.com"
+            });
+
+            Owner owner5 = _ownerRepository.CreateOwner(new Owner()
+            {
+                FirstName = "Kent",
+                LastName = "Beck",
+                Address = "Mock Street 5",
+                PhoneNumber = "000000000",
+                Email = "kentb@mockmail.com"
+            });
+
+            Owner owner6 = _ownerRepository.CreateOwner(new Owner()
+            {
+                FirstName = "Charles",
+                LastName = "Darwin",
+                Address = "Mock Street 6",
+                PhoneNumber = "000000000",
+                Email = "charlesd@mockmail.com"
+            });
+
             _petRepository.CreatePet(new Pet() 
             {
                 Name = "Snoopy",
@@ -26,7 +80,7 @@ namespace PetShop.Infrastructure.Data
                 BirthDate = DateTime.Parse("01-01-2020"),
                 SoldDate = DateTime.Parse("01-06-2020"),
                 Color = "White",
-                PreviousOwner = "John Johnson",
+                PreviousOwner = owner1,
                 Price = 2500
             });
 
@@ -37,7 +91,7 @@ namespace PetShop.Infrastructure.Data
                 BirthDate = DateTime.Parse("01-12-2019"),
                 SoldDate = DateTime.Parse("01-05-2020"),
                 Color = "Orange",
-                PreviousOwner = "Jack Jackson",
+                PreviousOwner = owner2,
                 Price = 2000
             });
 
@@ -48,7 +102,7 @@ namespace PetShop.Infrastructure.Data
                 BirthDate = DateTime.Parse("01-12-2010"),
                 SoldDate = DateTime.Parse("01-05-2012"),
                 Color = "White/red",
-                PreviousOwner = "Uncle Bob",
+                PreviousOwner = owner3,
                 Price = 3000
             });
 
@@ -59,7 +113,7 @@ namespace PetShop.Infrastructure.Data
                 BirthDate = DateTime.Parse("01-12-2016"),
                 SoldDate = DateTime.Parse("01-05-2017"),
                 Color = "White",
-                PreviousOwner = "Martin Fowler",
+                PreviousOwner = owner4,
                 Price = 5000
             });
 
@@ -70,7 +124,7 @@ namespace PetShop.Infrastructure.Data
                 BirthDate = DateTime.Parse("01-12-2018"),
                 SoldDate = DateTime.Parse("01-05-2019"),
                 Color = "White/grey",
-                PreviousOwner = "Gang of Four",
+                PreviousOwner = owner5,
                 Price = 1500
             });
 
@@ -81,7 +135,7 @@ namespace PetShop.Infrastructure.Data
                 BirthDate = DateTime.Parse("15-09-1830"),
                 SoldDate = DateTime.Parse("15-09-1835"),
                 Color = "Green",
-                PreviousOwner = "Charles Darwin",
+                PreviousOwner = owner6,
                 Price = 3500
             });
         }

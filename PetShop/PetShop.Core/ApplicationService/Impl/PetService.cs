@@ -38,11 +38,7 @@ namespace PetShop.Core.ApplicationService.Impl
             if (pet.Color.Length < 3)
             {
                 errorMessage += "Name of color must be at least three characters\n";
-            }
-            if (pet.PreviousOwner.Length < 2)
-            {
-                errorMessage += "Name of previous owner must be at least two characters\n";
-            }
+            }           
             if (pet.Price < 0)
             {
                 errorMessage += "Price of pet cannot be negative\n";
